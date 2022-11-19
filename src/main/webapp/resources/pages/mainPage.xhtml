@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>JSF Example</title>
+        <h:outputStylesheet name="css/mainPage.css"/>
+    </h:head>
+    <h:body>
+        <h:form id="url-input-form" class="link-input-form">
+            <div class="form-header">
+                <h2>Анализируемая страница</h2>
+            </div>
+            <h:panelGroup id="url-input" columns="2">
+                <h:inputText class="link-input"
+                             value="#{MainPage.selectedLinkUrl}"
+                             pt:placeholder="Введите адрес для анализа"
+                             required="true"
+                             id="url-text-input">
+                </h:inputText>
+            </h:panelGroup>
+
+            <h:panelGroup id="error-mgs">
+                <h:outputText class="error-msg" value="#{MainPage.errorMsg}" rendered="true"/>
+            </h:panelGroup>
+
+            <p:commandButton styleClass = "default-btn" value = "Анализировать"
+                             oncomplete="PF('waitingBoxDialog').hide()"
+                             onstart="PF('waitingBoxDialog').show()"
+                             action = "#{MainPage.findLinksOnPage()}"
+                             update="links-table error-mgs">
+                <f:ajax render="error-mgs" resetValues="true"/>
+            </p:commandButton>
+        </h:form>
+
+        <h:panelGroup id="waitingBox">
+            <p:dialog header="Ожидайте ..." widgetVar="waitingBoxDialog">
+                <p:graphicImage styleClass="loading-img" value="/resources/img/loading.gif"/>
+                <h:outputText styleClass="loading-msg" value="Идёт обработка ..."/>
+            </p:dialog>
+        </h:panelGroup>
+
+        <div class="table-holder">
+            <div class="table-label">
+                <h2>Обнаруженные ссылки</h2>
+            </div>
+            <div class="table-wrapper">
+                <h:dataTable value="#{MainPage.links}" var="link"
+                             styleClass="links-table"
+                             columnClasses="links-id,link-name,link-url"
+                             headerClass="table-header"
+                             selection="#{MainPage.selectedLink}"
+                             rowKey="#{link.id}"
+                             selectionMode="single"
+                             id="links-table">
+                    <h:column>
+                        <f:facet name="header">№</f:facet>
+                        #{link.id}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Имя ссылки</f:facet>
+                        #{link.name}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Адрес ссылки</f:facet>
+                        <h:form>
+                            <h:commandLink value = "#{link.url}" action = "#{MainPage.selectNewUrl(link.url)}">
+                                <f:ajax update="@form" render="url-input-form" resetValues="true"/>
+                            </h:commandLink>
+                        </h:form>
+                    </h:column>
+                </h:dataTable>
+            </div>
+        </div>
+
+        <h:form class="clear-form">
+            <p:commandButton styleClass="default-btn"
+                             value = "Очистить"
+                             action = "#{MainPage.clearLinks()}"
+                             update="links-table"/>
+        </h:form>
+
+    </h:body>
+</html>
+
+

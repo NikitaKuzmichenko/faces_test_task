@@ -1,0 +1,190 @@
+body{
+    background-color:white;
+    margin:0;
+    padding 0;
+}
+input:focus, textarea:focus {
+    outline:none;
+}
+
+.form-header{
+    border: 2px solid;
+    border-color:black;
+    align-items:center;
+
+    margin-top:50px;
+
+    width:1300px;
+    height:40px
+}
+
+.form-header h2{
+    margin-top:6px;
+    margin-left:30px;
+}
+
+.link-input-form{
+    align-items:center;
+    display:flex;
+    flex-direction:column;
+}
+
+.link-input{
+    text-indent:5px;
+    font-size:20px;
+
+    border: 2px solid;
+    border-color:black;
+    border-top:0;
+
+    width:1300px;
+    height:30px
+}
+
+.link-input::placeholder{
+    color:black;
+    font-size:20px;
+}
+
+.default-btn{
+    align-items:center !important;
+
+    background-color:white !important;
+    color:black !important;
+
+    font-size:26px !important;
+
+    margin-top:20px !important;
+    width:350px !important;
+
+    border : 2px solid !important;
+    border-color: black !important;
+}
+
+.clear-form{
+    align-items:center;
+    display:flex;
+    flex-direction:column;
+}
+
+.table-holder{
+    margin-top:20px;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1300px;
+}
+
+.table-wrapper{
+    max-height: 800px;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.table-label{
+    width: 1300px;
+    height : 40px;
+
+    margin-top:20px;
+    margin-bottom:0px;
+
+    border-color:black;
+    border: 2px solid;
+}
+
+.table-label h2{
+    margin-top:6px;
+    margin-left:30px;
+}
+
+.links-table{
+    border-color:black;
+    border: 2px solid black;
+    border-top:0px;
+    border-collapse: collapse;
+
+     width:1300px;
+     font-size:18px;
+}
+
+.links-id{
+    width:40px;
+    max-width:40px;
+
+    color:black;
+
+    border-left : 2px solid;
+    border-color: black;
+}
+
+.link-name{
+
+    width:460px;
+    max-width:460px;
+
+    color:black;
+
+    border-left : 2px solid;
+    border-color: black;
+
+    overflow: hidden;
+}
+
+.link-url{
+    color:black;
+
+    border-left : 2px solid;
+    border-color: black;
+
+    width:800px;
+    max-width:800px;
+    overflow: hidden;
+}
+
+.link-url:hover{
+    color:blue;
+    cursor: pointer;
+}
+
+.table-header {
+    color: black;
+    border : 2px solid;
+    border-color: black;
+    border-top:0px;
+    border-spacing:0px;
+
+    height: 25px;
+    font-size:24px;
+    background-color:white;
+}
+
+table.links-table tr:nth-child(even)  {
+    background-color: white;
+}
+
+table.links-table tr:nth-child(odd)  {
+    background-color: #DDDDDD;
+}
+
+.loading-img{
+    width:50px;
+    height:50px;
+}
+
+.loading-msg{
+    font-size:24px;
+    margin-left:20px;
+    margin-top:5px;
+}
+
+.ui-dialog-content{
+    display:flex;
+    flex-direction:row;
+}
+
+
+.error-msg{
+    font-size:20px;
+    color:red;
+}
