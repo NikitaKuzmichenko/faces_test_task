@@ -26,8 +26,8 @@ public class StringPageReader implements PageReader<String> {
 
         StringBuilder sb = new StringBuilder();
         try(Scanner sc = new Scanner(url.openStream())) {
-            while(sc.hasNext()) {
-                sb.append(sc.next());
+            while(sc.hasNextLine()) {
+                sb.append(sc.nextLine());
             }
         } catch (IOException e) {
             throw new PageLoadingException("Failed to read page content");
