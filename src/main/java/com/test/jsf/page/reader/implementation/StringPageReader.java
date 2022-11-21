@@ -4,7 +4,6 @@ import com.test.jsf.exception.PageLoadingException;
 import com.test.jsf.page.reader.PageReader;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -25,7 +24,7 @@ public class StringPageReader implements PageReader<String> {
         }
 
         StringBuilder sb = new StringBuilder();
-        try(Scanner sc = new Scanner(url.openStream())) {
+        try(Scanner sc = new Scanner(url.openStream(),"UTF-8")) {
             while(sc.hasNextLine()) {
                 sb.append(sc.nextLine());
             }
